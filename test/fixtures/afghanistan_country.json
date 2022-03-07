@@ -1,0 +1,12 @@
+{
+  "id": "1",
+  "enabled": "1",
+  "code3l": "AFG",
+  "code2l": "AF",
+  "name": "Afghanistan",
+  "name_official": "Islamic Republic of Afghanistan",
+  "flag": "https://firebasestorage.googleapis.com/v0/b/job-interview-cfe5a.appspot.com/o/AF.png?alt=media",
+  "latitude": "33.98299275",
+  "longitude": "66.39159363",
+  "zoom": "6"
+}

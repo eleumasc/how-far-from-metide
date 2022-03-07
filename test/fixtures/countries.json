@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "enabled": "1",
+    "code3l": "AFG",
+    "code2l": "AF",
+    "name": "Afghanistan",
+    "name_official": "Islamic Republic of Afghanistan",
+    "flag": "https://firebasestorage.googleapis.com/v0/b/job-interview-cfe5a.appspot.com/o/AF.png?alt=media",
+    "latitude": "33.98299275",
+    "longitude": "66.39159363",
+    "zoom": "6"
+  },
+  {
+    "id": "199",
+    "enabled": "1",
+    "code3l": "ALA",
+    "code2l": "AX",
+    "name": "Åland Islands",
+    "name_official": "Åland Islands",
+    "flag": "https://firebasestorage.googleapis.com/v0/b/job-interview-cfe5a.appspot.com/o/AX.png?alt=media",
+    "latitude": "60.25403213",
+    "longitude": "20.35918350",
+    "zoom": "9"
+  }
+]
