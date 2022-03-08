@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:how_far_from_metide/bloc/detail_bloc.dart';
-import 'package:how_far_from_metide/domain/country.dart';
+import 'package:how_far_from_metide/presentation/bloc/detail_bloc.dart';
+import 'package:how_far_from_metide/domain/entities/country.dart';
 import 'package:how_far_from_metide/service_locator.dart';
 
 class DetailPage extends StatefulWidget {

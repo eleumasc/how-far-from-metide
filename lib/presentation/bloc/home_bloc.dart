@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:how_far_from_metide/domain/country.dart';
-import 'package:how_far_from_metide/domain/country_repository.dart';
-import 'package:how_far_from_metide/domain/country_comparators.dart';
+import 'package:how_far_from_metide/domain/entities/country.dart';
+import 'package:how_far_from_metide/domain/usecases/get_all_countries.dart';
 
 abstract class HomeEvent extends Equatable {
   @override
@@ -30,13 +29,12 @@ class HomeReadyState extends HomeState {
 }
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final CountryRepository countryRepository;
+  final GetAllCountries getAllCountries;
 
-  HomeBloc(this.countryRepository) : super(HomeInitialState()) {
+  HomeBloc(this.getAllCountries) : super(HomeInitialState()) {
     on<HomeCountriesFetched>((event, emit) async {
-      var eitherFailureOrCountries = await countryRepository.getAll();
-      eitherFailureOrCountries.fold((_) {}, (countries) {
-        countries.sort(byDistance);
+      var failureOrCountries = await getAllCountries();
+      failureOrCountries.fold((_) {}, (countries) {
         emit(HomeReadyState(countries));
       });
     });

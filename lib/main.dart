@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:how_far_from_metide/presentation/home_page.dart';
+import 'package:how_far_from_metide/presentation/pages/home_page.dart';
 import 'package:how_far_from_metide/config.dart' as config;
 import 'package:how_far_from_metide/service_locator.dart' as di;
 import 'package:splash_screen_view/SplashScreenView.dart';

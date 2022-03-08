@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:how_far_from_metide/domain/country.dart';
-import 'package:how_far_from_metide/domain/note.dart';
-import 'package:how_far_from_metide/domain/note_repository.dart';
+import 'package:how_far_from_metide/domain/entities/country.dart';
+import 'package:how_far_from_metide/domain/entities/note.dart';
+import 'package:how_far_from_metide/domain/usecases/get_note_by_country.dart';
+import 'package:how_far_from_metide/domain/usecases/put_note_by_country.dart';
 
 abstract class DetailEvent extends Equatable {
   final Country country;
@@ -56,14 +57,15 @@ class DetailReadyState extends DetailState {
 }
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
-  final NoteRepository noteRepository;
+  final GetNoteByCountry getNoteByCountry;
+  final PutNoteByCountry putNoteByCountry;
 
-  DetailBloc(this.noteRepository) : super(DetailInitialState()) {
+  DetailBloc(this.getNoteByCountry, this.putNoteByCountry)
+      : super(DetailInitialState()) {
     on<DetailNoteLoaded>(
       (event, emit) async {
-        var eitherFailureOrNote =
-            await noteRepository.getByCountry(event.country);
-        eitherFailureOrNote.fold(
+        var failureOrNote = await getNoteByCountry(event.country);
+        failureOrNote.fold(
           (_) {},
           (note) {
             emit(DetailSetupState(note.text));
@@ -81,7 +83,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
 
     on<DetailNoteSaved>(
       (event, emit) async {
-        await noteRepository.putByCountry(event.country, Note(event.noteText));
+        await putNoteByCountry(event.country, Note(event.noteText));
         emit(DetailReadyState(false));
       },
     );

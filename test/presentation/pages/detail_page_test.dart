@@ -3,19 +3,20 @@ import 'dart:convert';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:how_far_from_metide/bloc/detail_bloc.dart';
-import 'package:how_far_from_metide/domain/country.dart';
-import 'package:how_far_from_metide/presentation/detail_page.dart';
+import 'package:how_far_from_metide/data/models/country_model.dart';
+import 'package:how_far_from_metide/presentation/bloc/detail_bloc.dart';
+import 'package:how_far_from_metide/domain/entities/country.dart';
+import 'package:how_far_from_metide/presentation/pages/detail_page.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 class MockDetailBloc extends MockBloc<DetailEvent, DetailState>
     implements DetailBloc {}
 
 void main() {
   final Country tCountry =
-      Country.fromJson(jsonDecode(fixture("afghanistan_country.json")));
+      CountryModel.fromJson(jsonDecode(fixture("afghanistan_country.json")));
   const String tNoteText = "example note text";
 
   testWidgets(
@@ -30,7 +31,8 @@ void main() {
       //act
 
       // assert
-      final titleFinder = find.text(tCountry.name!);
+      final titleFinder = find.descendant(
+          of: find.byType(AppBar), matching: find.text(tCountry.name!));
       expect(titleFinder, findsOneWidget);
     },
   );

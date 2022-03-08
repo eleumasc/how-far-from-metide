@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:how_far_from_metide/bloc/home_bloc.dart';
+import 'package:how_far_from_metide/presentation/bloc/home_bloc.dart';
 import 'package:how_far_from_metide/config.dart' as config;
-import 'package:how_far_from_metide/presentation/detail_page.dart';
+import 'package:how_far_from_metide/presentation/pages/detail_page.dart';
 import 'package:how_far_from_metide/service_locator.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:how_far_from_metide/domain/country.dart';
-import 'package:how_far_from_metide/domain/failures.dart';
-import 'package:how_far_from_metide/domain/note.dart';
+import 'package:how_far_from_metide/core/errors/failures.dart';
+import 'package:how_far_from_metide/domain/entities/country.dart';
+import 'package:how_far_from_metide/domain/entities/note.dart';
 
 /// The contract for a [[Note]] repository.
 abstract class NoteRepository {

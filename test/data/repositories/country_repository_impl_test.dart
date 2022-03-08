@@ -2,11 +2,13 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:how_far_from_metide/domain/country.dart';
-import 'package:how_far_from_metide/domain/exceptions.dart';
-import 'package:how_far_from_metide/domain/failures.dart';
-import 'package:how_far_from_metide/infrastructure/network/network_info.dart';
-import 'package:how_far_from_metide/infrastructure/persistence/country_repository_impl.dart';
+import 'package:how_far_from_metide/core/errors/failures.dart';
+import 'package:how_far_from_metide/core/network/network_info.dart';
+import 'package:how_far_from_metide/data/datasources/local_country_data_source.dart';
+import 'package:how_far_from_metide/data/datasources/remote_country_data_source.dart';
+import 'package:how_far_from_metide/data/models/country_model.dart';
+import 'package:how_far_from_metide/data/repositories/country_repository_impl.dart';
+import 'package:how_far_from_metide/core/errors/exceptions.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../fixtures/fixture_reader.dart';
@@ -37,8 +39,9 @@ void main() {
   group("getAll", () {
     final String tJson = fixture("countries.json");
     final List<dynamic> tData = jsonDecode(tJson);
-    final List<Country> tCountries =
-        tData.map((tCountryData) => Country.fromJson(tCountryData)).toList();
+    final List<CountryModel> tCountries = tData
+        .map((tCountryData) => CountryModel.fromJson(tCountryData))
+        .toList();
 
     group("device is online", () {
       setUp(() {
