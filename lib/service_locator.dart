@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 GetIt sl = GetIt.I;
 
+/// It initializes the service locator.
 Future<void> init() async {
   sl.registerLazySingleton<http.Client>(() =>
       http_auth.BasicAuthClient(config.remoteUsername, config.remotePassword));

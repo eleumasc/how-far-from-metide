@@ -1,9 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:geo/geo.dart';
 
+/// The Metide HQ geographic location
 const LatLng zeroLocation = LatLng(45.5106738, 12.2321666);
 
+/// A class that represents a country, whose scheme reflects the one from the API
 class Country extends Equatable {
+  /// [[Country]] constructor.
   const Country(
     this.id,
     this.enabled,
@@ -28,6 +31,7 @@ class Country extends Equatable {
   final int? zoom;
   final double? distance;
 
+  /// It constructs a new [[Country]] from a JSON object.
   factory Country.fromJson(Map<String, dynamic> data) {
     double? lat =
     data["latitude"] != null ? double.tryParse(data["latitude"]!) : null;
@@ -51,6 +55,7 @@ class Country extends Equatable {
         distance);
   }
 
+  /// It return a JSON object representing this [[Country]].
   Map<String, dynamic> toJson() {
     return {
       "id": id,
