@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:how_far_from_metide/presentation/bloc/detail_bloc.dart';
@@ -77,12 +78,9 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget buildCountryDetails(BuildContext context) {
-    const titleTextStyle = TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.black, fontSize: 22);
-    const paragraphTextStyle = TextStyle(
-        fontWeight: FontWeight.normal, color: Colors.black, fontSize: 16);
-    const labelTextStyle = TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16);
+    final headline = Theme.of(context).textTheme.headlineLarge;
+    final body1 = Theme.of(context).textTheme.bodyText1;
+    final body2 = Theme.of(context).textTheme.bodyText2;
     return Container(
       padding: const EdgeInsets.all(4.0),
       child: Column(
@@ -90,44 +88,60 @@ class _DetailPageState extends State<DetailPage> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(bottom: 10),
-            child: Text(
-              country.name ?? "",
-              style: titleTextStyle,
+            child: Flex(
+              direction: Axis.horizontal,
+              children: [
+                Flexible(
+                  child: Text(
+                    country.name ?? "",
+                    style: headline,
+                  ),
+                ),
+              ],
             ),
           ),
-          Row(
+          Flex(
+            direction: Axis.horizontal,
             children: [
-              const Text(
+              Text(
                 "Official name: ",
-                style: labelTextStyle,
+                style: body1,
               ),
-              Text(
-                country.officialName ?? (country.name ?? ""),
-                style: paragraphTextStyle,
+              Flexible(
+                child: Text(
+                  country.officialName ?? (country.name ?? ""),
+                  style: body2,
+                ),
               ),
             ],
           ),
-          Row(
+          Flex(
+            direction: Axis.horizontal,
             children: [
-              const Text(
+              Text(
                 "Code 2L: ",
-                style: labelTextStyle,
+                style: body1,
               ),
-              Text(
-                country.code2l ?? "",
-                style: paragraphTextStyle,
+              Flexible(
+                child: Text(
+                  country.code2l ?? "",
+                  style: body2,
+                ),
               ),
             ],
           ),
-          Row(
+          Flex(
+            direction: Axis.horizontal,
             children: [
-              const Text(
-                "Code 3L: ",
-                style: labelTextStyle,
-              ),
               Text(
-                country.code3l ?? "",
-                style: paragraphTextStyle,
+                "Code 3L: ",
+                style: body1,
+              ),
+              Flexible(
+                child: Text(
+                  country.code3l ?? "",
+                  style: body2,
+                ),
               ),
             ],
           ),
