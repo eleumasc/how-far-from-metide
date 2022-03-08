@@ -88,8 +88,7 @@ class _DetailPageState extends State<DetailPage> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.only(bottom: 10),
-            child: Flex(
-              direction: Axis.horizontal,
+            child: Row(
               children: [
                 Flexible(
                   child: Text(
@@ -100,8 +99,7 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
           ),
-          Flex(
-            direction: Axis.horizontal,
+          Row(
             children: [
               Text(
                 "Official name: ",
@@ -115,8 +113,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ],
           ),
-          Flex(
-            direction: Axis.horizontal,
+          Row(
             children: [
               Text(
                 "Code 2L: ",
@@ -130,8 +127,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ],
           ),
-          Flex(
-            direction: Axis.horizontal,
+          Row(
             children: [
               Text(
                 "Code 3L: ",
