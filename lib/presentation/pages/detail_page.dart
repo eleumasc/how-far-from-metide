@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:how_far_from_metide/presentation/bloc/detail_bloc.dart';
 import 'package:how_far_from_metide/domain/entities/country.dart';
 import 'package:how_far_from_metide/service_locator.dart';
@@ -78,6 +78,7 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget buildCountryDetails(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final headline = Theme.of(context).textTheme.headlineLarge;
     final body1 = Theme.of(context).textTheme.bodyText1;
     final body2 = Theme.of(context).textTheme.bodyText2;
@@ -102,7 +103,7 @@ class _DetailPageState extends State<DetailPage> {
           Row(
             children: [
               Text(
-                "Official name: ",
+                "${l10n.officialName}: ",
                 style: body1,
               ),
               Flexible(
@@ -116,7 +117,7 @@ class _DetailPageState extends State<DetailPage> {
           Row(
             children: [
               Text(
-                "Code 2L: ",
+                "${l10n.code2l}: ",
                 style: body1,
               ),
               Flexible(
@@ -130,7 +131,7 @@ class _DetailPageState extends State<DetailPage> {
           Row(
             children: [
               Text(
-                "Code 3L: ",
+                "${l10n.code3l}: ",
                 style: body1,
               ),
               Flexible(
@@ -147,6 +148,7 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Widget buildNote(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       color: const Color.fromARGB(255, 255, 255, 167),
       child: Container(
@@ -160,8 +162,8 @@ class _DetailPageState extends State<DetailPage> {
                 bloc.add(DetailNoteChanged(country));
               },
               maxLines: 8,
-              decoration: const InputDecoration.collapsed(
-                hintText: "Write something...",
+              decoration: InputDecoration.collapsed(
+                hintText: l10n.writeSomething,
               ),
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:how_far_from_metide/presentation/pages/home_page.dart';
 import 'package:how_far_from_metide/config.dart' as config;
 import 'package:how_far_from_metide/service_locator.dart' as di;
@@ -20,6 +21,8 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: withSplash(HomePage()),
     );
   }
